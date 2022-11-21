@@ -28,7 +28,7 @@ function App() {
                 {tasks.map(task => (
                         <div key={task.id}>
                             {task.text}
-                            <div onClick={deleteTask}>
+                            <div onClick={()=>deleteTask(task)}>
                                 <img src={deleteimg} alt="delete-icon"
                                      className="delete-icon"
 
