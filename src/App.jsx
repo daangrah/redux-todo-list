@@ -1,6 +1,6 @@
 import './App.css';
 import {useDispatch, useSelector} from "react-redux";
-import {nanoid} from "nanoid";
+
 import React from "react";
 import deleteimg from './assets/delete.png'
 import Header from "./components/Header";
@@ -10,13 +10,13 @@ import {fetchCustomers} from "./async/customers";
 function App() {
     const dispatch = useDispatch()
     const tasks = useSelector(state => state.tasks)
-    const addTask = (text) => {
-        const task = {
-            text,
-            id: nanoid()
-        }
-        dispatch({type:"ADD_TASK", payload:task})
-    }
+    // const addTask = (text) => {
+    //     const task = {
+    //         text,
+    //         id: nanoid()
+    //     }
+    //     dispatch({type:"ADD_TASK", payload:task})
+    // }
     const deleteTask = (task) => {
         dispatch({type:"REMOVE_TASK", payload:task.id})
     }
@@ -26,8 +26,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <InputArea addTask={addTask}/>
+      <InputArea/>
         <div>
+
             {/* eslint-disable-next-line react/button-has-type */}
             <button onClick={addTodoHandler}>Подгрузить с сервака</button>
         {tasks.length > 0 ?

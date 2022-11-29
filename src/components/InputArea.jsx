@@ -1,9 +1,18 @@
 import React, {useState} from 'react';
-
+import {useDispatch} from "react-redux";
+import {nanoid} from "nanoid";
 
 // eslint-disable-next-line react/prop-types
-function InputArea(addTask) {
+function InputArea() {
+    const dispatch = useDispatch()
 
+    const addTask = (text) => {
+        const task = {
+            text,
+            id: nanoid()
+        }
+        dispatch({type:"ADD_TASK", payload:task})
+    }
     const [value, setValue] = useState('')
     const addHandler = (e) => {
         if(e.key === "Enter" && value.trim()){
@@ -20,7 +29,7 @@ function InputArea(addTask) {
     const changed = (e) => (setValue(e.target.value))
 
     return (
-        // eslint-disable-next-line react/jsx-filename-extension
+
         <div>
             <input type="text" placeholder="ENTER YOUR TODO"
                    value={value}
