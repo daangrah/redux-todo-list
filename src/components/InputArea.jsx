@@ -1,46 +1,42 @@
-import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
-import {nanoid} from "nanoid";
-import {addTaskAction} from "../store/actionCreators";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
+import { addTaskAction } from '../store/actionCreators';
 
-// eslint-disable-next-line react/prop-types
-function InputArea() {
-    const dispatch = useDispatch()
+function InputArea () {
+  const dispatch = useDispatch();
 
-    const addTask = (text) => {
-        const task = {
-            text,
-            id: nanoid()
-        }
-        dispatch(addTaskAction(task))
+  const addTask = (text) => {
+    const task = {
+      text,
+      id: nanoid()
+    };
+    dispatch(addTaskAction(task));
+  };
+  const [value, setValue] = useState('');
+  const handlerAddTask = (e) => {
+    if (e.key === 'Enter' && value.trim()) {
+      addTask(value.trim());
+      setValue('');
     }
-    const [value, setValue] = useState('')
-    const addHandler = (e) => {
-        if(e.key === "Enter" && value.trim()){
-            addTask(value.trim())
-            setValue('')
-        }
+  };
+  const handlerKeyPress = () => {
+    if (value.trim()) {
+      addTask(value.trim());
+      setValue('');
     }
-    const keyHandler = () => {
-        if(value.trim()){
-            addTask(value.trim())
-            setValue('')
-        }
-    }
-    const changed = (e) => (setValue(e.target.value))
+  };
+  const changed = (e) => (setValue(e.target.value));
 
-    return (
-
+  return (
         <div>
             <input type="text" placeholder="ENTER YOUR TODO"
                    value={value}
                    onChange={changed}
-                   onKeyDown={addHandler}/>
-            {/* eslint-disable-next-line react/button-has-type */}
-            <button onClick={keyHandler} value={value}>ADD</button>
-
+                   onKeyDown={handlerAddTask}/>
+            <button onClick={handlerKeyPress} value={value}>ADD</button>
         </div>
-    );
+  );
 }
 
 export default InputArea;

@@ -4,23 +4,22 @@
         "es2021": true
     },
     "extends": [
-        "eslint:recommended",
         "plugin:react/recommended",
-        "airbnb",
-        "prettier"
-    ],
-    "overrides": [
+        "standard"
     ],
     "parserOptions": {
-        "ecmaVersion": "latest",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
         "sourceType": "module"
     },
     "plugins": [
         "react"
     ],
     "rules": {
-       "import/prefer-default-export": "off",
-        "default-param-last": 0,
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+        "semi": [2, "always"],
+        "react/prop-types": "off",
+        "eol-last": "off"
     }
 }

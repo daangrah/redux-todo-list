@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Header() {
-    return (
+function Header () {
+  return (
         <div>
             <h1>REDUX TODO LIST</h1>
         </div>
-    );
+  );
 }
 
 export default Header;

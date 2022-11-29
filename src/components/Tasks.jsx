@@ -1,38 +1,22 @@
 import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import deleteimg from "../assets/delete.png";
-import {deleteTaskAction} from "../store/actionCreators";
+import { useSelector } from 'react-redux';
+import Task from './Task';
 
-function Tasks() {
-    const dispatch = useDispatch()
-    const tasks = useSelector(state => state.tasks)
-    const deleteTask = (task) => {
-        dispatch(deleteTaskAction(task.id))
-    }
-    return (
-        <div>
-            <div>
-                {tasks.length > 0 ?
-                    <div>
-                        {tasks.map(task => (
-                            <div key={task.id}>
-                                {task.text}
-                                {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-                                <div onClick={() => deleteTask(task)}>
-                                    <img src={deleteimg} alt="delete-icon"
-                                         className="delete-icon"
+function Tasks () {
+  const tasks = useSelector(state => state.tasks);
 
-                                    />
-                                </div>
-                            </div>
-                        ))}
+  return (
+        <>
+            {tasks.length > 0
+              ? <div>
+                    {tasks.map(task => (
+                        <Task key={task.id} task={task} id={task.id}/>
+                    ))}
                     </div>
-                    :
-                    <div>NO TASKS YET</div>
-                }
-            </div>
-        </div>
-    );
+              : <div>NO TASKS YET</div>
+            }
+        </>
+  );
 }
 
 export default Tasks;
