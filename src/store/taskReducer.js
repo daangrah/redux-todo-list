@@ -1,12 +1,16 @@
 const ADD_TASK = "ADD_TASK"
 const REMOVE_TASK = "REMOVE_TASK"
+const ADD_USERS = "ADD_USERS"
 
 const initialState = {
     tasks: []
 }
 
+// eslint-disable-next-line default-param-last
 export const taskReducer = (state = initialState, action) => {
     switch (action.type){
+        case ADD_USERS:
+            return {...state, tasks: [...state.tasks, ...action.payload]}
         case ADD_TASK:
             return {...state, tasks: [...state.tasks, action.payload]}
         case REMOVE_TASK:
@@ -16,3 +20,5 @@ export const taskReducer = (state = initialState, action) => {
     }
 
 }
+
+export const addManyTasksAction = (payload) => ({type: ADD_USERS, payload})
