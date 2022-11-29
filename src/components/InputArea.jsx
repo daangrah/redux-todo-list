@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {nanoid} from "nanoid";
+import {addTaskAction} from "../store/taskReducer";
 
 // eslint-disable-next-line react/prop-types
 function InputArea() {
@@ -11,7 +12,7 @@ function InputArea() {
             text,
             id: nanoid()
         }
-        dispatch({type:"ADD_TASK", payload:task})
+        dispatch(addTaskAction(task))
     }
     const [value, setValue] = useState('')
     const addHandler = (e) => {
