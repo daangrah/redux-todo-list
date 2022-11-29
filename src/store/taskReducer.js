@@ -1,11 +1,10 @@
-import {ADD_TASK, REMOVE_TASK} from "../components/constants";
+import {ADD_TASK, REMOVE_TASK} from "../Constants/constants";
 
 
 const initialState = {
     tasks: []
 }
 
-// eslint-disable-next-line default-param-last
 export const taskReducer = (state = initialState, action) => {
     switch (action.type){
         case ADD_TASK:
@@ -18,5 +17,4 @@ export const taskReducer = (state = initialState, action) => {
 
 }
 
-export const addTaskAction = (payload) => ({type: ADD_TASK, payload})
-export const deleteTaskAction = (payload) => ({type: REMOVE_TASK, payload})
+

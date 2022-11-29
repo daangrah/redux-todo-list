@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {nanoid} from "nanoid";
-import {addTaskAction} from "../store/taskReducer";
+import {addTaskAction} from "../store/actionCreators";
 
 // eslint-disable-next-line react/prop-types
 function InputArea() {

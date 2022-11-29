@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import deleteimg from "../assets/delete.png";
-import {deleteTaskAction} from "../store/taskReducer";
+import {deleteTaskAction} from "../store/actionCreators";
 
 function Tasks() {
     const dispatch = useDispatch()
