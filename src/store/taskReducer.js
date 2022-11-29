@@ -1,6 +1,5 @@
-const ADD_TASK = "ADD_TASK"
-const REMOVE_TASK = "REMOVE_TASK"
-const ADD_USERS = "ADD_USERS"
+import {ADD_TASK, REMOVE_TASK} from "../components/constants";
+
 
 const initialState = {
     tasks: []
@@ -9,8 +8,6 @@ const initialState = {
 // eslint-disable-next-line default-param-last
 export const taskReducer = (state = initialState, action) => {
     switch (action.type){
-        case ADD_USERS:
-            return {...state, tasks: [...state.tasks, ...action.payload]}
         case ADD_TASK:
             return {...state, tasks: [...state.tasks, action.payload]}
         case REMOVE_TASK:
