@@ -29,12 +29,16 @@ function InputArea () {
   const changed = (e) => (setValue(e.target.value));
 
   return (
-        <div>
+        <div className='typing-area'>
             <input type="text" placeholder="ENTER YOUR TODO"
                    value={value}
                    onChange={changed}
-                   onKeyDown={handlerAddTask}/>
-            <button onClick={handlerKeyPress} value={value}>ADD</button>
+                   onKeyDown={handlerAddTask}
+                   className='input-area'
+            />
+            <button onClick={handlerKeyPress}
+                    value={value}
+                    className='add-button'> ADD </button>
         </div>
   );
 }
