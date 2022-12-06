@@ -1,4 +1,4 @@
-import { ADD_TASK, CHANGE_TASK, REMOVE_TASK } from '../Constants/constants';
+import { ADD_TASK, CHANGE_TASK, REMOVE_TASK, SET_TASKS } from '../Constants/constants';
 
 const initialState = {
   tasks: []
@@ -17,6 +17,8 @@ export default function taskReducer (state = initialState, action) {
           ? { ...task, text: action.payload.text }
           : task)
       };
+    case SET_TASKS:
+      return { ...state, tasks: [...action.payload] };
     default:
       return state;
   }

@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux';
 import { changeTaskAction, deleteTaskAction } from '../store/actionCreators';
 import '../App.css';
 
-// import { nanoid } from 'nanoid';
-
 function Task (task, key) {
   const [edit, setEdit] = useState(false);
   const [item, setNewItem] = useState(task.task.text);
@@ -32,7 +30,6 @@ function Task (task, key) {
   }
 
   return (
-
         <div key={key.id} className='task-area' >
             <div className='task-text'>
                 {task.task.text}

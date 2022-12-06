@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { addTaskAction } from '../store/actionCreators';
 
 function InputArea () {
   const dispatch = useDispatch();
-
+  const tasks = useSelector(state => state.tasks);
   const addTask = (text) => {
     const task = {
       text,
@@ -16,12 +16,14 @@ function InputArea () {
   const [value, setValue] = useState('');
   const handlerAddTask = (e) => {
     if (e.key === 'Enter' && value.trim()) {
+      sessionStorage.setItem('tasks', JSON.stringify(tasks));
       addTask(value.trim());
       setValue('');
     }
   };
   const handlerKeyPress = () => {
     if (value.trim()) {
+      sessionStorage.setItem('tasks', JSON.stringify(tasks));
       addTask(value.trim());
       setValue('');
     }
